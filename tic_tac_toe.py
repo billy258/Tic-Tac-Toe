@@ -15,15 +15,33 @@ def empty_grid (grid):
             else: return True
     return False 
 
-def row_checker (grid,row,col):
+def rows (grid,row,col):
     first = grid[row][col]
     for j in grid[row]:
         if j != first or j == 0:
             return False
     return True
     
+def columns (grid, row, col):
+    first = grid[row][col]
+    for w in [grid[0][col], grid[1][col], grid[2][col]]:
+        if w != first or w == 0:
+            return False
+    return True
 
+def diagonal_left (grid, row, col):
+    first = grid[row][col]
+    for q in [grid[0][0], grid[1][1], grid[2][2]]:
+        if q != first or q == 0:
+            return False
+    return True
 
+def diagonal_right (grid, row, col):
+    first = grid[row][col]
+    for w in [grid[0][2], grid[1][1], grid[2][0]]:
+       if w != first or w == 0:
+            return False
+    return True
 
 while empty_grid(grid):
     
@@ -46,9 +64,21 @@ while empty_grid(grid):
         selection = iplayer1 - 1
         if i == selection and grid[row][col] == 0:
             grid[row][col] = 'X'
-            if row_checker(grid,row,col) == True:
+            if rows (grid, row, col) == True:
                 win = True
-                win_player = grid[row][0]
+                win_player = grid[row][col]
+                break
+            if columns (grid, row, col):
+                win = True
+                win_player = grid[row][col]
+                break
+            if diagonal_left (grid, row, col):
+                win = True
+                win_player = grid[row][col]
+                break
+            if diagonal_right (grid, row, col):
+                win = True
+                win_player = grid[row][col]
                 break
             break
         if i == selection and grid[row][col] != 0:
