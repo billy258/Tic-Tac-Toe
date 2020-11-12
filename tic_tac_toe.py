@@ -1,7 +1,7 @@
 #this is a game of tic tac toe
 # To win the player must get a 3 in a row vertically, horonzontally and 
 # diagonally. 
-
+from random import randint
 grid = [
     [0,0,0],
     [0,0,0],
@@ -47,6 +47,7 @@ while empty_grid(grid):
     
     player1 = input('where on the grid would you like to go?\n')
     if player1 == 'quit':break
+
     valid = False
     win = False
     
@@ -54,10 +55,9 @@ while empty_grid(grid):
         iplayer1 = int(player1)
         if iplayer1 < 0 or iplayer1 > 9: 
             raise Exception
-            
     except:
         valid = True
-
+ 
     for i in range(9):
         row = i // 3
         col = i % 3
@@ -84,7 +84,17 @@ while empty_grid(grid):
         if i == selection and grid[row][col] != 0:
             valid = True
             break
-        
+
+    #Player 2 makes a random move if player one has played
+    while empty_grid(grid):
+        if valid is True:
+            break
+        rrow = randint(0,2)
+        rcol = randint(0,2)
+        if grid[rrow][rcol] == 0:
+            grid[rrow][rcol] = 'O'
+            break
+
     print('\n')
     for r in grid:
         print(*r)
