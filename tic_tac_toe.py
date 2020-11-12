@@ -93,6 +93,22 @@ while empty_grid(grid):
         rcol = randint(0,2)
         if grid[rrow][rcol] == 0:
             grid[rrow][rcol] = 'O'
+            if rows (grid, rrow, rcol) == True:
+                win = True
+                win_player = grid[rrow][rcol]
+                break
+            if columns (grid, rrow, rcol):
+                win = True
+                win_player = grid[rrow][rcol]
+                break
+            if diagonal_left (grid, rrow, rcol):
+                win = True
+                win_player = grid[rrow][rcol]
+                break
+            if diagonal_right (grid, rrow, rcol):
+                win = True
+                win_player = grid[rrow][rcol]
+                break
             break
 
     print('\n')
