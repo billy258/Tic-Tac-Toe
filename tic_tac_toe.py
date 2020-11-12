@@ -85,8 +85,6 @@ while empty_grid(grid):
             valid = True
             break
         
-            
-        
     print('\n')
     for r in grid:
         print(*r)
