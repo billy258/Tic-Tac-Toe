@@ -96,10 +96,3 @@ while empty_grid(grid):
         print(win_player+' has won')
         break
         
-
-
-    
-        
-
-    
-    
