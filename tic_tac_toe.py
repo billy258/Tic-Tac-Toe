@@ -43,20 +43,38 @@ def diagonal_right (grid, row, col):
             return False
     return True
 
-while empty_grid(grid):
-    
-    player1 = input('where on the grid would you like to go?\n')
-    if player1 == 'quit':break
+def coin_toss ():
+    coin = randint(0,1)
+    if coin == 1:
+        coin = 'heads'
+    else: 
+        coin = 'tails'
+    return coin
 
-    valid = False
+
+
+while empty_grid(grid):
+    valid = True
     win = False
+    coin_result = None
+    
+    coin_selection = input('Head or Tails?\n').lower()
+    coin_toss()
+    if coin_selection == coin_toss():
+        coin_result = 1
+    else: 
+        coin_result:
+
+    if coin_result == 1:
+        player1 = input('where on the grid would you like to go?\n')
+    if player1 == 'quit': break
     
     try:
         iplayer1 = int(player1)
         if iplayer1 < 0 or iplayer1 > 9: 
             raise Exception
     except:
-        valid = True
+        valid = False
  
     for i in range(9):
         row = i // 3
@@ -82,12 +100,12 @@ while empty_grid(grid):
                 break
             break
         if i == selection and grid[row][col] != 0:
-            valid = True
+            valid = False
             break
 
     #Player 2 makes a random move if player one has played
     while empty_grid(grid):
-        if valid is True:
+        if valid is False:
             break
         rrow = randint(0,2)
         rcol = randint(0,2)
