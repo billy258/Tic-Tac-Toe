@@ -53,20 +53,21 @@ def coin_toss ():
 
 
 
+coin_result = None
+
 while empty_grid(grid):
     valid = True
     win = False
-    coin_result = None
     
     coin_selection = input('Head or Tails?\n').lower()
     coin_toss()
     if coin_selection == coin_toss():
         coin_result = 1
-    else: 
-        coin_result:
-
-    if coin_result == 1:
+    
+    if coin_result == 1 or coin_result == 2:
         player1 = input('where on the grid would you like to go?\n')
+        coin_result = 2
+        
     if player1 == 'quit': break
     
     try:
